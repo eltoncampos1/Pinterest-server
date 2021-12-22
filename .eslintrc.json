@@ -23,6 +23,7 @@
     "no-console": "off",
     "no-useless-constructor": "off",
     "class-methods-use-this": "off",
+    "no-restricted-syntax": "off",
     "import/extensions": [
       "error",
       "ignorePackages",

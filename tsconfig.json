@@ -14,6 +14,23 @@
     "strictPropertyInitialization": false,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "modules/*": [
+        "modules/*"
+      ],
+      "use-cases/*": [
+        "use-cases/*"
+      ],
+      "repositories": [
+        "repositories/*"
+      ],
+      "shared/*": [
+        "shared/*"
+      ],
+      "errors/*": [
+        "errors/*"
+      ]
+    }
   },
   "include": [
     "src/**/*.ts"
