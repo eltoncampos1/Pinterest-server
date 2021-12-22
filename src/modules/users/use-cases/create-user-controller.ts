@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
-import { MissimParamError } from '../../../shared/errors';
+
 import { CreateUserUseCase } from './create-user';
 
 export class CreateUserController {
@@ -11,6 +11,6 @@ export class CreateUserController {
 
     const user = await createUserUseCase.execute({ email, password, age });
 
-    return response.status(201).json(user);
+    return response.status(201).json({ id: user?.id, email, age });
   }
 }

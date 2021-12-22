@@ -13,6 +13,7 @@ export class CreateUserUseCase {
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
 
+    @inject('HashProvider')
     private hashProvider: IHashProvider
   ) { }
 
