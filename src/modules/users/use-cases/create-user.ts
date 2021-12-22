@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
+
 import { inject, injectable } from 'tsyringe';
-import { AppError } from '../../../shared/errors/errors';
+import { AppError, MissimParamError } from '../../../shared/errors';
 import { ICreateUserDTO } from '../dtos';
 import { User } from '../entities/User';
 import { IHashProvider } from '../providers/hash-provider/models/IHashProvider';
@@ -17,6 +18,17 @@ export class CreateUserUseCase {
 
   async execute({ email, password, age }: ICreateUserDTO): Promise<User | undefined> {
     const userAlreadyExists = await this.usersRepository.findByEmail(email)
+
+
+
+    const requiredParams = [password, email, age];
+
+
+    for (const param of requiredParams) {
+      if (!param) {
+        throw new MissimParamError(String(param))
+      }
+    }
 
     if (userAlreadyExists) {
       throw new AppError('Email already registered in our system')
