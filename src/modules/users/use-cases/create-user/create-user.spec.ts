@@ -1,4 +1,4 @@
-import { MissimParamError } from '../../../../shared/errors';
+import { MissingParamError } from '../../../../shared/errors';
 import { AppError } from '../../../../shared/errors/app-error';
 import { ICreateUserDTO } from '../../dtos';
 import { FakeHashProvider } from '../../providers/hash-provider/fake/fake-hash-provider';
@@ -24,7 +24,7 @@ describe('Create User', () => {
 
     expect(async () => {
       await createUserUsecase.execute(user as ICreateUserDTO);
-    }).rejects.toBeInstanceOf(MissimParamError);
+    }).rejects.toBeInstanceOf(MissingParamError);
   });
   it('should not be able to create an user with no password', async () => {
     const user = {
@@ -34,7 +34,7 @@ describe('Create User', () => {
 
     expect(async () => {
       await createUserUsecase.execute(user as ICreateUserDTO);
-    }).rejects.toBeInstanceOf(MissimParamError);
+    }).rejects.toBeInstanceOf(MissingParamError);
   });
 
   it('should not be able to create an user with no age', async () => {
@@ -45,7 +45,7 @@ describe('Create User', () => {
 
     expect(async () => {
       await createUserUsecase.execute(user as ICreateUserDTO);
-    }).rejects.toBeInstanceOf(MissimParamError);
+    }).rejects.toBeInstanceOf(MissingParamError);
   });
 
   it('should not be able to create an user age is < 18', async () => {
@@ -60,9 +60,22 @@ describe('Create User', () => {
     }).rejects.toBeInstanceOf(AppError);
   });
 
+  it('should be create a user name if no name is provided', async () => {
+    const user = {
+      email: 'any_email@email.com',
+      password: 'any_password',
+      age: 18,
+    };
+
+    const result = await createUserUsecase.execute(user as ICreateUserDTO);
+
+    expect(result).toHaveProperty('name');
+    expect(result?.name).toBe('any_email');
+  });
+
   it('should  be able to create an user ', async () => {
     const user = {
-      email: 'any_email',
+      email: 'any_email@email.com',
       password: 'any_password',
       age: 18,
     };

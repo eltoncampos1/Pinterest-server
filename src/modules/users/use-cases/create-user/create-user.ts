@@ -29,6 +29,7 @@ export class CreateUserUseCase {
       }
     }
 
+
     const newName = email.split('@')[0]
 
     if (userAlreadyExists) {
