@@ -23,9 +23,7 @@ describe('Create User', () => {
     };
 
     expect(async () => {
-      const result = await createUserUsecase.execute(user as ICreateUserDTO);
-
-      console.log(result);
+      await createUserUsecase.execute(user as ICreateUserDTO);
     }).rejects.toBeInstanceOf(MissimParamError);
   });
   it('should not be able to create an user with no password', async () => {
@@ -35,9 +33,7 @@ describe('Create User', () => {
     };
 
     expect(async () => {
-      const result = await createUserUsecase.execute(user as ICreateUserDTO);
-
-      console.log(result);
+      await createUserUsecase.execute(user as ICreateUserDTO);
     }).rejects.toBeInstanceOf(MissimParamError);
   });
 
@@ -48,9 +44,7 @@ describe('Create User', () => {
     };
 
     expect(async () => {
-      const result = await createUserUsecase.execute(user as ICreateUserDTO);
-
-      console.log(result);
+      await createUserUsecase.execute(user as ICreateUserDTO);
     }).rejects.toBeInstanceOf(MissimParamError);
   });
 
@@ -62,9 +56,19 @@ describe('Create User', () => {
     };
 
     expect(async () => {
-      const result = await createUserUsecase.execute(user as ICreateUserDTO);
-
-      console.log(result);
+      await createUserUsecase.execute(user as ICreateUserDTO);
     }).rejects.toBeInstanceOf(AppError);
+  });
+
+  it('should  be able to create an user ', async () => {
+    const user = {
+      email: 'any_email',
+      password: 'any_password',
+      age: 18,
+    };
+
+    const result = await createUserUsecase.execute(user);
+
+    expect(result).toHaveProperty('id');
   });
 });
