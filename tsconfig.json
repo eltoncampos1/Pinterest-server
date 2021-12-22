@@ -13,7 +13,6 @@
     "sourceMap": true,
     "strictPropertyInitialization": false,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
     "paths": {
       "modules/*": [
         "modules/*"

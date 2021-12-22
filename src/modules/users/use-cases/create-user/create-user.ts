@@ -1,11 +1,11 @@
 /* eslint-disable prettier/prettier */
-
 import { inject, injectable } from 'tsyringe';
-import { AppError, MissimParamError } from '../../../shared/errors';
-import { ICreateUserDTO } from '../dtos';
-import { User } from '../entities/User';
-import { IHashProvider } from '../providers/hash-provider/models/IHashProvider';
-import { IUsersRepository } from '../repositories/IUsersRepositories';
+
+import { MissimParamError, AppError } from '../../../../shared/errors';
+import { User } from '../../entities/User';
+import { ICreateUserDTO } from '../../dtos';
+import { IHashProvider } from '../../providers/hash-provider/models/IHashProvider';
+import { IUsersRepository } from '../../repositories/IUsersRepositories';
 
 @injectable()
 export class CreateUserUseCase {
