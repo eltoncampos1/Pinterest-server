@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { MissimParamError } from '../../../shared/errors';
 import { CreateUserUseCase } from './create-user';
 
 export class CreateUserController {

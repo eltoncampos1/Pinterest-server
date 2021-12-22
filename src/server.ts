@@ -5,7 +5,7 @@ import './shared/container';
 import 'express-async-errors';
 
 import express, { NextFunction, Request, Response } from 'express';
-import { AppError } from './shared/errors/errors';
+import { AppError } from './shared/errors/app-error';
 
 const { PORT } = process.env;
 
