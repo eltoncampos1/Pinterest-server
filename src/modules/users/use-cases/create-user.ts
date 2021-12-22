@@ -22,6 +22,10 @@ export class CreateUserUseCase {
       throw new AppError('Email already registered in our system')
     }
 
+    if (age < 18) {
+      throw new AppError('you must be over 18 to create an account.')
+    }
+
     const hashedPassword = await this.hashProvider.generateHash(password)
 
     const user = await this.usersRepository.create({ email, password: hashedPassword, age });
