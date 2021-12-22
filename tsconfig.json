@@ -1,41 +1,24 @@
 {
-    "compilerOptions": {
-        "resolveJsonModule": true,
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "moduleResolution": "node",
-        "baseUrl": "./src",
-        "target": "es6",
-        "module": "commonjs",
-        "outDir": "./dist",
-        "rootDir": "./",
-        "strict": true,
-        "sourceMap": true,
-        "strictPropertyInitialization": false,
-        "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true,
-        "paths": {
-            "modules/*": [
-                "modules/*"
-            ],
-            "use-cases/*": [
-                "use-cases/*"
-            ],
-            "repositories": [
-                "repositories/*"
-            ],
-            "shared/*": [
-                "shared/*"
-            ],
-            "errors/*": [
-                "errors/*"
-            ]
-        }
-    },
-    "include": [
-        "src/**/*.ts"
-    ],
-    "exclude": [
-        "node_modules"
-    ]
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "baseUrl": "./src",
+    "target": "es6",
+    "module": "commonjs",
+    "outDir": "./dist",
+    "rootDir": "./",
+    "strict": true,
+    "sourceMap": true,
+    "strictPropertyInitialization": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
