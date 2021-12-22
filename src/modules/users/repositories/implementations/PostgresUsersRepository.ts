@@ -17,4 +17,8 @@ export class PostgresUSersRepository implements IUsersRepository {
 
     return user;
   }
+
+  async findByEmail(email: string): Promise<User | undefined> {
+    return this.repository.findOne({ email });
+  }
 }
