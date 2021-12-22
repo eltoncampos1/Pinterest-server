@@ -8,7 +8,7 @@ export enum Pronouns {
   'ele/dele/-o',
   'elu/delu/-u',
   'elx/delx/-x',
-  'ile/dile'
+  'ile/dile',
 }
 
 export enum Gender {
@@ -16,8 +16,6 @@ export enum Gender {
   feminino,
   nao_binario,
 }
-
-
 
 @Entity('users')
 export class User {
@@ -28,10 +26,16 @@ export class User {
   name: string;
 
   @Column()
+  email: string;
+
+  @Column()
   surname?: string;
 
   @Column()
   username: string;
+
+  @Column()
+  age: number;
 
   @Column()
   password: string;
@@ -58,8 +62,6 @@ export class User {
     enum: Gender,
   })
   gender?: Gender;
-
-
 
   constructor() {
     if (!this.id) {
