@@ -1,7 +1,8 @@
+/* eslint-disable prefer-destructuring */
 /* eslint-disable prettier/prettier */
 import { inject, injectable } from 'tsyringe';
 
-import { MissimParamError, AppError } from '../../../../shared/errors';
+import { MissingParamError, AppError } from '../../../../shared/errors';
 import { User } from '../../entities/User';
 import { ICreateUserDTO } from '../../dtos';
 import { IHashProvider } from '../../providers/hash-provider/models/IHashProvider';
@@ -17,19 +18,18 @@ export class CreateUserUseCase {
     private hashProvider: IHashProvider
   ) { }
 
-  async execute({ email, password, age }: ICreateUserDTO): Promise<User | undefined> {
+  async execute({ email, password, age, name }: ICreateUserDTO): Promise<User | undefined> {
     const userAlreadyExists = await this.usersRepository.findByEmail(email)
-
-
 
     const requiredParams = [password, email, age];
 
-
     for (const param of requiredParams) {
       if (!param) {
-        throw new MissimParamError(String(param))
+        throw new MissingParamError(String(param))
       }
     }
+
+    const newName = email.split('@')[0]
 
     if (userAlreadyExists) {
       throw new AppError('Email already registered in our system')
@@ -41,7 +41,8 @@ export class CreateUserUseCase {
 
     const hashedPassword = await this.hashProvider.generateHash(password)
 
-    const user = await this.usersRepository.create({ email, password: hashedPassword, age });
+
+    const user = await this.usersRepository.create({ email, password: hashedPassword, age, name: newName });
 
     return user;
   }

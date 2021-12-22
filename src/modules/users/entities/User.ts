@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 import { Column, Entity, PrimaryColumn } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 
@@ -21,6 +22,9 @@ export enum Gender {
 export class User {
   @PrimaryColumn()
   id?: string;
+
+  @Column()
+  name?: string;
 
   @Column()
   email: string;

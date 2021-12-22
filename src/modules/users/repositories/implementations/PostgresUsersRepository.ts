@@ -10,8 +10,8 @@ export class PostgresUSersRepository implements IUsersRepository {
     this.repository = getRepository(User);
   }
 
-  async create({ id, age, email, password }: ICreateUserDTO): Promise<User | undefined> {
-    const user = this.repository.create({ id, age, email, password });
+  async create({ id, age, email, password, name }: ICreateUserDTO): Promise<User | undefined> {
+    const user = this.repository.create({ id, age, email, password, name });
 
     await this.repository.save(user);
 
